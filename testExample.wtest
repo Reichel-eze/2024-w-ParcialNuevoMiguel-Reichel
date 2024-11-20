@@ -1,1 +1,16 @@
 import example.*
+
+describe "Tests de funciones del gobierno" {
+
+  const persona1 = new Comensal(dineroDisponible = 100, habitoDeAlimentacion = dePaladarFino)
+  const persona2 = new Comensal(dineroDisponible = 100, habitoDeAlimentacion = dePaladarFino)
+  const persona3 = new Comensal(dineroDisponible = 100, habitoDeAlimentacion = dePaladarFino)
+
+  test "Correcto funcionamiento de la decision economica" {
+    gobierno.agregarHabitante(persona1)
+    gobierno.agregarHabitante(persona2)
+    gobierno.agregarHabitante(persona3)
+    gobierno.decisionEconomica()
+    assert.that(gobierno.sonHabitantesDeTodoTerreno())
+  }
+}

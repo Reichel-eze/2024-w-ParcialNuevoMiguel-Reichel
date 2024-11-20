@@ -167,21 +167,26 @@ class Comensal {
 
   method puedeCambiarTodoTerreno() = habitoDeAlimentacion.puedeCambiarTodoTerreno()
 
+  method esTodoTerreno() = habitoDeAlimentacion.esTodoTerreno()
+
 }
 
 object celiaco {
   method leAgrada(comida) = comida.esAptoCeliaco()
   method puedeCambiarTodoTerreno() = false
+  method esTodoTerreno() = false
 }
 
 object dePaladarFino {
   method leAgrada(comida) = comida.esEspecial() or comida.valoracion() > 100
   method puedeCambiarTodoTerreno() = true
+  method esTodoTerreno() = false
 }
 
 object todoTerreno {
   method leAgrada(comida) = true // nada le desagrada
   method puedeCambiarTodoTerreno() = false
+  method esTodoTerreno() = true
 }
 
 object miguelito {
@@ -220,4 +225,10 @@ object gobierno {
   }
 
   method habitantesAptosCambio() = habitantes.filter({habitante => habitante.puedeCambiarTodoTerreno()}) 
+
+  method agregarHabitante(newHabitante) {
+    habitantes.add(newHabitante)
+  }
+
+  method sonHabitantesDeTodoTerreno() = habitantes.all({habitante => habitante.esTodoTerreno()})
 }
